@@ -1,22 +1,8 @@
 import React, { useState } from 'react';
 
-import { 
-  SafeAreaView, 
-  View, 
-  Text, 
-  TextInput,
-  TouchableOpacity
-} from 'react-native';
-
-import { 
-  input,
-  button,
-  badge,
-  text,
-  view,
-  placeholderColor,
-  defaultOpacity
-} from '../styles';
+import { SafeAreaView, View, Text, TextInput, FlatList } from 'react-native';
+import { input, text, view, placeholderColor } from '../styles';
+import { Badge, Button } from '../components';
 
 export function Home() {
   const [newSkill, setNewSkill] = useState<string>('');
@@ -34,7 +20,7 @@ export function Home() {
       <View style={view.content}>
         <Text style={text.title}>Welcome, Willian!</Text>
 
-        <TextInput 
+        <TextInput
           value={newSkill}
           placeholder='New skill...'
           placeholderTextColor={placeholderColor}
@@ -42,25 +28,22 @@ export function Home() {
           onChangeText={setNewSkill}
         />
 
-        <TouchableOpacity 
-          style={button.default}
-          activeOpacity={defaultOpacity}
-          onPress={handleAddNewSkill}
-        >
-          <Text style={button.defaultText}>Add</Text>
-        </TouchableOpacity>
+        <Button
+          onPress={handleAddNewSkill} 
+          title="Add"
+        />
 
         <Text style={[text.title, text.titleMargin]}>
           My Skills
         </Text>
 
-        {mySkills.length > 0 && mySkills.map((skill, index) => (
-          <TouchableOpacity key={index} style={badge.content}>          
-            <Text style={text.badge}>
-              {skill}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        <FlatList
+          data={mySkills}
+          keyExtractor={(_, index) => index.toString()}
+          renderItem={({ item }) => (
+            <Badge value={item}/>
+          )}
+        />
       </View>
     </SafeAreaView>
   );
