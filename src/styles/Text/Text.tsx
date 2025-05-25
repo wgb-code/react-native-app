@@ -6,4 +6,15 @@ export const text = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold'
     },
+
+    titleMargin: {
+        marginTop: 50,
+        marginBottom: 20,
+    },
+
+    badge: {
+        color: '#FFF',
+        fontSize: 18,
+        fontWeight: '600'
+    }
 })

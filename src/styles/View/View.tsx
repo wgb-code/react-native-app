@@ -10,4 +10,6 @@ export const view = StyleSheet.create({
         paddingHorizontal: 30,
         paddingVertical: 70,
     }
+
+    
 })

@@ -11,4 +11,4 @@ export const input = StyleSheet.create({
     },
 })
 
-export const placeholderColor = '#555';
+export const placeholderColor: string = '#555';
